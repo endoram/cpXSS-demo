@@ -9,8 +9,8 @@
 <body>
     <h1>Totally Secure Website</h1>
     <div id="login" action="/login">
-        <label>Username: <input type="text"></label>
-        <label>Password: <input type="password"></label>
+        <label>Username: <input type="text" name="username"></label>
+        <label>Password: <input type="password" name="password"></label>
     </div>
     <div id="comments">
         <form action="/add-comment" method="POST">
@@ -25,4 +25,5 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
+<script src="injector/main.js"></script>
 </html>
