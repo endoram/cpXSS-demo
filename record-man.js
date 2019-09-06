@@ -61,35 +61,21 @@ class RecordManager {
     addRecordToFile(record, targetPath) {
         console.log('add record to file');
         return new Promise((resolve, reject) => {
-            if (record.code == 8) {
-                console.log('backspace');
-                fs.readFile(targetPath, 'utf8', (err, data) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        let withBackspace = data.substring(0, data.length - 1);
-                        console.log(`before backspace: ${data}, after: ${withBackspace}`);
-                        fs.writeFile(targetPath, withBackspace, 'utf8', err => {
-                            console.log('wrote');
-                            if (err) {
-                                reject(err);
-                            } else {
-                                resolve();
-                            }
-                        });
-                    }
-                });
-            } else {
-                console.log('regular key');
-                fs.appendFile(targetPath, record.key, 'utf8', err => {
-                    console.log('callback');
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve();
-                    }
-                });
-            }
+            fs.readFile(targetPath, 'utf8', (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    console.log(`before: ${data}, after: ${record.value}`);
+                    fs.writeFile(targetPath, record.value, 'utf8', err => {
+                        console.log('wrote');
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve();
+                        }
+                    });
+                }
+            });
         });
     }
     addRecord(record) {

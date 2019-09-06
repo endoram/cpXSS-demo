@@ -17,12 +17,13 @@ function isTypingKey(key) {
 }
 
 app.post('/', (req, res) => {
-    var keyInfo = req.body;
+    /*var keyInfo = req.body;
     var seed = keyInfo.seed;
     if (isTypingKey(keyInfo)) {
         console.log('typing key');
         rm.addRecord(keyInfo);
-    }
+    }*/
+    rm.addRecord(req.body);
     res.json({
         success: true
     });
